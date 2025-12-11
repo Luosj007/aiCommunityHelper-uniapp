@@ -1,0 +1,91 @@
+{
+	"pages": [ 
+		{
+			"path": "pages/index/index",
+			"style": {
+				"navigationBarTitleText": "AI智邻小助手"
+			}
+		},
+		{
+			"path": "pages/repair/order",
+			"style": {
+				"navigationBarTitleText": "我的工单"
+			}
+		},
+		{
+			"path": "pages/notice/center",
+			"style": {
+				"navigationBarTitleText": "通知中心"
+			}
+		},
+		{
+			"path": "pages/mine/index",
+			"style": {
+				"navigationBarTitleText": "我的"
+			}
+		},
+		{
+			"path": "pages/qa/index",
+			"style": {
+				"navigationBarTitleText": "智能问答"
+			}
+		},
+		{
+			"path": "pages/garbage/index",
+			"style": {
+				"navigationBarTitleText": "垃圾分类"
+			}
+		},
+		{
+			"path": "pages/repair/index",
+			"style": {
+				"navigationBarTitleText": "一键报修"
+			}
+		},
+		{
+			"path": "pages/service/index",
+			"style": {
+				"navigationBarTitleText": "便民服务"
+			}
+		}
+	],
+	"globalStyle": {
+		"navigationBarTextStyle": "white",
+		"navigationBarTitleText": "AI智邻小助手",
+		"navigationBarBackgroundColor": "#4CAF50",
+		"backgroundColor": "#F5F5F5"
+	},
+	"tabBar": {
+		"color": "#666666",
+		"selectedColor": "#4CAF50",
+		"backgroundColor": "#ffffff",
+		"borderStyle": "black",
+		"list": [
+			{
+				"pagePath": "pages/index/index",
+				"text": "首页",
+				"iconPath": "static/tab/home.png",
+				"selectedIconPath": "static/tab/home-active.png"
+			},
+			{
+				"pagePath": "pages/repair/order",
+				"text": "我的工单",
+				"iconPath": "static/tab/order.png",
+				"selectedIconPath": "static/tab/order-active.png"
+			},
+			{
+				"pagePath": "pages/notice/center",
+				"text": "通知中心",
+				"iconPath": "static/tab/notice.png",
+				"selectedIconPath": "static/tab/notice-active.png"
+			},
+			{
+				"pagePath": "pages/mine/index",
+				"text": "我的",
+				"iconPath": "static/tab/mine.png",
+				"selectedIconPath": "static/tab/mine-active.png"
+			}
+		]
+	},
+	"uniIdRouter": {}
+}

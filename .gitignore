@@ -1,0 +1,27 @@
+# UniApp打包产物（核心忽略项）
+unpackage/
+
+# 依赖目录（体积大，可通过npm install重建）
+node_modules/
+
+# 编辑器/IDE配置文件（仅本地生效）
+.vscode/
+.idea/
+.project
+.classpath
+.settings/
+
+# 系统自动生成的文件
+.DS_Store
+Thumbs.db
+
+# 日志/缓存文件
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+*.swp
+
+# 环境变量文件（若有敏感信息）
+.env
+.env.*
