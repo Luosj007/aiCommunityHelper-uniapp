@@ -1,0 +1,172 @@
+.index-page {
+  padding: 16rpx;
+  background-color: #F5F5F5;
+  min-height: 100vh;
+}
+
+/* 常见问题标题 */
+.qa-title {
+  font-size: 32rpx;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 20rpx;
+  padding-left: 8rpx;
+}
+
+/* 按钮容器：每行4个、自动换行、均匀分布 */
+.quick-qa-bar {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  background-color: #fff;
+  padding: 20rpx 10rpx;
+  border-radius: 12rpx;
+  margin-bottom: 20rpx;
+}
+/* 按钮样式：和上图完全一致（浅绿色背景+绿边框+绿文字） */
+.quick-qa-btn {
+  /* 每行固定4个，自动计算宽度（含间距） */
+  flex: 0 0 calc(25% - 12rpx);
+  margin-bottom: 15rpx;
+  /* 椭圆形状 */
+  border-radius: 60rpx;
+  /* 浅绿色背景（和上图一致） */
+  background-color: #e8f5e9;
+  /* 绿色边框 */
+  border: 2rpx solid #4CAF50;
+  /* 绿色文字 */
+  color: #4CAF50;
+  /* 文字居中+饱满内边距 */
+  text-align: center;
+  padding: 14rpx 0;
+  font-size: 26rpx;
+}
+
+/* 回答结果样式 */
+.qa-result {
+  background-color: #fff;
+  border-radius: 12rpx;
+  padding: 20rpx;
+  margin-bottom: 30rpx;
+  box-shadow: 0 2rpx 8rpx #eee;
+}
+.qa-result-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15rpx;
+  padding-bottom: 10rpx;
+  border-bottom: 1rpx solid #f5f5f5;
+}
+.qa-label {
+  font-size: 30rpx;
+  font-weight: bold;
+  color: #4CAF50;
+}
+.clear-btn {
+  padding: 6rpx 20rpx;
+  background-color: #e8f5e9;
+  color: #4CAF50;
+  border: none;
+  border-radius: 20rpx;
+  font-size: 24rpx;
+  font-weight: 500;
+}
+.clear-btn:active {
+  opacity: 0.8;
+}
+.qa-result-content {
+  font-size: 28rpx;
+  color: #333;
+  line-height: 1.6;
+}
+
+/* 功能区样式 */
+.func-area {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20rpx;
+  margin-bottom: 30rpx;
+}
+.func-item {
+  background-color: #fff;
+  border-radius: 12rpx;
+  padding: 30rpx 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: 0 2rpx 10rpx #eee;
+}
+.func-icon {
+  font-size: 40rpx;
+  color: #4CAF50;
+  margin-bottom: 10rpx;
+}
+.func-text {
+  font-size: 28rpx;
+  color: #333;
+}
+
+/* 推荐区样式 */
+.recommend-area, .notice-area {
+  background-color: #fff;
+  border-radius: 12rpx;
+  padding: 20rpx;
+  margin-bottom: 20rpx;
+  box-shadow: 0 2rpx 8rpx #eee;
+}
+.recommend-title, .notice-title {
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #FF9800;
+  margin-bottom: 10rpx;
+}
+.recommend-list {
+  width: 100%;
+}
+.recommend-item {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 15rpx;
+  padding-bottom: 15rpx;
+  border-bottom: 1rpx solid #f5f5f5;
+}
+.item-img {
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 8rpx;
+  margin-right: 15rpx;
+}
+.item-info {
+  flex: 1;
+}
+.item-name {
+  font-size: 28rpx;
+  font-weight: bold;
+  color: #333;
+  display: block;
+  margin-bottom: 5rpx;
+}
+.item-desc {
+  font-size: 24rpx;
+  color: #666;
+  display: block;
+}
+
+/* 通知区样式 */
+.notice-item {
+  padding: 10rpx 0;
+  border-bottom: 1rpx solid #eee;
+}
+.notice-content {
+  font-size: 28rpx;
+  color: #333;
+  display: block;
+}
+.notice-time {
+  font-size: 24rpx;
+  color: #666;
+  display: block;
+  margin-top: 5rpx;
+}
