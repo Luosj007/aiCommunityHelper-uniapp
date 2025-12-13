@@ -49,7 +49,6 @@ export default {
     },
     // 新增：跳转详情页方法，传递服务id
     goToDetail(id) {
-			console.log(id);
       uni.navigateTo({
         url: `/pages/service/detail?id=${id}`
       });
