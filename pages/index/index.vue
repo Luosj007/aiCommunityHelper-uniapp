@@ -56,13 +56,22 @@
           </view>
         </view>
       </view>
+      <!-- 新增：点击查看更多 -->
+      <view class="view-more" @click="toService">
+        <text>点击查看更多</text>
+      </view>
     </view>
+
     <!-- 社区通知 -->
     <view class="notice-area" v-if="!qaResult">
       <text class="notice-title">社区通知</text>
       <view class="notice-item" v-for="item in noticeList" :key="item.id" @click="toNotice">
         <text class="notice-content">{{item.content}}</text>
         <text class="notice-time">{{item.time}}</text>
+      </view>
+      <!-- 新增：点击查看更多 -->
+      <view class="view-more" @click="toNotice">
+        <text>点击查看更多</text>
       </view>
     </view>
 
@@ -71,7 +80,7 @@
 
 <script setup>
 import { ref } from 'vue'
-import './index.css' // 引入外部样式文件
+import './index.css' 
 
 const recommendList = ref([
   { id: 1, img: "/static/shop1.png", name: "仁心社区药店", desc: "医保定点 | 24小时营业" },

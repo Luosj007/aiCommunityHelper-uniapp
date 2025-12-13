@@ -5,14 +5,12 @@
       <view class="service-card" v-for="item in serviceList" :key="item.id">
         <!-- 1. 服务名称（单独放在最上方） -->
         <text class="service-name">{{ item.name }}</text>
-        
         <!-- 2. 下方区域：左图 + 右信息 -->
         <view class="content-wrap">
           <!-- 左侧：固定尺寸图片（不管原图多大，显示一致） -->
           <view class="img-area">
             <image :src="item.img" class="service-img" mode="aspectFill"></image>
           </view>
-          
           <!-- 右侧：紧凑排列的信息 -->
           <view class="info-area">
             <text class="service-desc">{{ item.desc }}</text>
@@ -145,7 +143,7 @@ export default {
   flex: 1;
 }
 
-/* 服务描述（小字体，浅灰色） */
+/* 服务描述 */
 .service-desc {
   font-size: 22rpx;
   color: #666;
@@ -153,7 +151,7 @@ export default {
   margin-bottom: 8rpx;
 }
 
-/* 详细信息行：压缩间距 */
+/* 详细信息行：压缩间距 */ 
 .detail-row {
   display: flex;
   font-size: 20rpx; /* 缩小字体，提升利用率 */
