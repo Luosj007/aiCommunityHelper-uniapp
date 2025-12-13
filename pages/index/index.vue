@@ -74,8 +74,8 @@ import { ref } from 'vue'
 import './index.css' // 引入外部样式文件
 
 const recommendList = ref([
-  { id: 1, img: "/static/shop1.png", name: "XX药店", desc: "24小时营业 | 500米" },
-  { id: 2, img: "/static/shop2.png", name: "XX家政", desc: "上门服务 | 好评98%" }
+  { id: 1, img: "/static/shop1.png", name: "仁心社区药店", desc: "医保定点 | 24小时营业" },
+  { id: 2, img: "/static/shop2.png", name: "悦家专业家政服务中心", desc: "专业保洁 | 上门服务" }
 ])
 const noticeList = ref([
   { id: 1, content: "6月10日小区停水通知（9:00-18:00）", time: "2025-06-09" },
