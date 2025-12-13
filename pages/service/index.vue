@@ -34,48 +34,23 @@
 </template>
 
 <script>
+import { get } from '@/utils/request.js';
+
 export default {
   data() {
     return {
-		serviceList: [
-			{
-				id: 1,
-				img: "/static/shop1.png",
-				name: "仁心社区药店",
-				desc: "医保定点 | 24小时营业",
-				time: "全天24小时",
-				distance: "500米",
-				phone: "020-87654321"
-			},
-			{
-				id: 2,
-				img: "/static/shop2.png",
-				name: "悦家专业家政服务中心",
-				desc: "专业保洁 | 上门服务",
-				time: "08:00-22:00",
-				distance: "800米",
-				phone: "020-12345678"
-			},
-			{
-				id: 3,
-				img: "/static/shop3.png",
-				name: "鲜丰邻里生鲜超市",
-				desc: "新鲜果蔬 | 配送到家",
-				time: "07:00-23:00",
-				distance: "300米",
-				phone: "020-86547321"
-			},
-			{
-				id: 4,
-				img: "/static/shop4.png",
-				name: "爱心宠物医院",
-				desc: "专业兽医 | 24小时急诊",
-				time: "09:00-22:00（急诊24小时）",
-				distance: "1.2公里",
-				phone: "020-99998888"
-			}
-		]
+      serviceList: []
     };
+  },
+  // 页面加载时调用接口
+  onLoad() {
+    this.getServiceList();
+  },
+  methods: {
+    async getServiceList() {
+      const res = await get('/miniprogram/services', { page: 1, size: 10 });
+      this.serviceList = res.list;
+    }
   }
 };
 </script>
