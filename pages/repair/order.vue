@@ -47,8 +47,11 @@ export default {
   onLoad() {
     this.getOrderList();
   },
+  // ★★★ 新增：每次进入页面（包括跳转回来）都重新请求数据 ★★★
+  onShow() {
+    this.getOrderList();
+  },
   methods: {
-    // 和通知列表的getNoticeList写法完全一致
     async getOrderList() {
       const res = await get('/miniprogram/workOrders', { page: 1, size: 10 });
       this.orderList = res.list;
