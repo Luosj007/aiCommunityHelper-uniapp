@@ -9,7 +9,7 @@
 		{
 			"path": "pages/repair/order",
 			"style": {
-				"navigationBarTitleText": "我的工单"
+				"navigationBarTitleText": "报修记录"
 			}
 		},
 		{
@@ -81,7 +81,7 @@
 			},
 			{
 				"pagePath": "pages/repair/order",
-				"text": "我的工单",
+				"text": "报修记录",
 				"iconPath": "static/tab/order.png",
 				"selectedIconPath": "static/tab/order-active.png"
 			},

@@ -1,18 +1,12 @@
 <template>
   <view class="order-page">
-    <view class="page-title">我的工单</view>
-
-    <!-- 核心：v-if和v-else 同级且相邻 -->
-    <!-- 无工单数据时展示空状态 -->
+    <view class="page-title">报修记录</view>
     <view v-if="orderList.length === 0" class="order-empty">
-      <text>暂无工单记录</text>
+      <text>暂无保修记录</text>
       <button class="repair-btn" @click="toRepair">去提交报修</button>
     </view>
-
-    <!-- 有工单数据时展示列表（v-else 与上面的v-if 直接相邻） -->
     <view v-else class="order-list">
       <view class="order-item" v-for="item in orderList" :key="item.id">
-        <!-- 工单编号 + 状态 -->
         <view class="order-header">
           <text class="order-no">工单编号：{{ item.orderNo }}</text>
           <text 
@@ -33,46 +27,37 @@
         </view>
         <!-- 报修时间 -->
         <view class="order-time">
-          <text>提交时间：{{ item.createTime }}</text>
+          <text>提交时间：{{ item.time }}</text>
         </view>
       </view>
     </view>
   </view>
 </template>
 
-<script setup>
-import { ref } from 'vue'
+<script>
+import { get } from '@/utils/request.js';
 
-// 模拟工单数据（3条不同状态的工单）
-const orderList = ref([
-  {
-    id: 1,
-    orderNo: "WX20250611001", // 工单编号
-    status: "pending", // 状态标识：pending-待处理 process-处理中 done-已完成
-    statusText: "待处理",
-    content: "小区1栋3单元电梯故障，无法正常使用", // 报修内容
-    createTime: "2025-06-11 09:20:30" // 提交时间
+export default {
+  data() {
+    return {
+      orderList: []
+    };
   },
-  {
-    id: 2,
-    orderNo: "WX20250610002",
-    status: "process",
-    statusText: "处理中",
-    content: "家中厨房水管漏水，需要维修人员上门",
-    createTime: "2025-06-10 14:15:22"
+  // 和通知列表一致：页面加载时调用请求方法
+  onLoad() {
+    this.getOrderList();
   },
-  {
-    id: 3,
-    orderNo: "WX20250609003",
-    status: "done",
-    statusText: "已完成",
-    content: "楼道感应灯损坏，更换新的感应灯",
-    createTime: "2025-06-09 10:05:18"
+  methods: {
+    // 和通知列表的getNoticeList写法完全一致
+    async getOrderList() {
+      const res = await get('/miniprogram/workOrders', { page: 1, size: 10 });
+      this.orderList = res.list;
+    },
+    toRepair() {
+      uni.navigateTo({ url: "/pages/repair/index" });
+    }
   }
-])
-
-// 跳转到一键报修页
-const toRepair = () => uni.navigateTo({ url: "/pages/repair/index" })
+};
 </script>
 
 <style scoped>
