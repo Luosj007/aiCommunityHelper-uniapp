@@ -18,20 +18,26 @@
 </template>
 
 <script>
+// 接口逻辑：和service完全一致的导入+写法
+import { get } from '@/utils/request.js';
+
 export default {
   data() {
     return {
-      noticeList: [
-        { id: 1, title: "6月10日小区停水通知（9:00-18:00）", time: "2025-06-09" },
-        { id: 2, title: "亲子手工活动报名开始啦！（6月18日9:00-11:00，仅限30组家庭）", time: "2025-06-08" },
-        { id: 3, title: "小区消防演练通知（6月15日15:00，1栋/2栋业主需配合）", time: "2025-06-12" },
-        { id: 4, title: "7月物业费开始缴纳（截止6月30日，小程序缴费立减5元）", time: "2025-06-18" },
-        { id: 5, title: "小区绿化改造通知（6月20日-25日，3栋旁绿化带暂停使用）", time: "2025-06-15" },
-        { id: 6, title: "暑期少儿安全教育讲座报名（6月22日14:00，物业会议室）", time: "2025-06-19" }
-      ]
+      noticeList: [] // 仅清空静态数据，结构和service一致
     };
   },
+  onLoad() {
+    // 和service一致：onLoad直接调用请求方法
+    this.getNoticeList();
+  },
   methods: {
+    // 接口请求：和service的getServiceList写法完全一致
+    async getNoticeList() {
+      const res = await get('/miniprogram/notices', { page: 1, size: 10 });
+      this.noticeList = res.list;
+    },
+    // 跳转逻辑：和service的goToDetail写法完全一致
     goToDetail(id) {
       uni.navigateTo({
         url: `/pages/notice/detail?id=${id}`
