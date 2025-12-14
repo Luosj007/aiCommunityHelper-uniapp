@@ -2,8 +2,7 @@
   <view class="notice-center-page">
     <!-- 页面标题 -->
     <view class="page-title">相关通知</view>
-
-    <!-- 通知列表（仅展示标题+时间） -->
+    <!-- 通知列表 -->
     <view class="notice-list">
       <view 
         class="notice-item" 
@@ -33,7 +32,6 @@ export default {
     };
   },
   methods: {
-    // 点击通知跳转详情页，传递ID参数
     goToDetail(id) {
       uni.navigateTo({
         url: `/pages/notice/detail?id=${id}`

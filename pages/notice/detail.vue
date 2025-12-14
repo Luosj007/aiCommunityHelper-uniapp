@@ -1,12 +1,7 @@
 <template>
   <view class="notice-detail-page">
-    <!-- 通知标题 -->
     <view class="detail-title">{{ currentNotice.title }}</view>
-    
-    <!-- 通知发布时间 -->
     <view class="detail-time">{{ currentNotice.time }}</view>
-    
-    <!-- 通知详细内容 -->
     <view class="detail-content">{{ currentNotice.content }}</view>
   </view>
 </template>
@@ -15,8 +10,7 @@
 export default {
   data() {
     return {
-      currentNotice: {}, // 当前选中的通知详情
-      // 完整通知数据：包含id/title/time/content（详情页展示用）
+      currentNotice: {}, 
       noticeList: [
         { 
           id: 1, 
@@ -61,11 +55,7 @@ export default {
     // 接收列表页传递的通知ID（转数字类型）
     const noticeId = Number(options.id);
     // 根据ID匹配对应的完整通知数据
-    this.currentNotice = this.noticeList.find(item => item.id === noticeId) || {
-      title: "通知不存在",
-      time: "",
-      content: "未找到该通知的详细内容"
-    };
+    this.currentNotice = this.noticeList.find(item => item.id === noticeId)
   }
 };
 </script>
