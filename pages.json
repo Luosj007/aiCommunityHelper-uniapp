@@ -19,6 +19,12 @@
 			}
 		},
 		{
+			"path": "pages/notice/detail",
+			"style": {
+				"navigationBarTitleText": "通知详情"
+			}
+		},
+		{
 			"path": "pages/mine/index",
 			"style": {
 				"navigationBarTitleText": "我的"

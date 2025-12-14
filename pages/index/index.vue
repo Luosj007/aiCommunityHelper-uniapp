@@ -66,7 +66,7 @@
     <view class="notice-area" v-if="!qaResult">
       <text class="notice-title">社区通知</text>
       <view class="notice-item" v-for="item in noticeList" :key="item.id" @click="toNotice">
-        <text class="notice-content">{{item.content}}</text>
+        <text class="notice-content">{{item.title}}</text>
         <text class="notice-time">{{item.time}}</text>
       </view>
       <!-- 新增：点击查看更多 -->
@@ -87,8 +87,8 @@ const recommendList = ref([
   { id: 2, img: "/static/shop2.png", name: "悦家专业家政服务中心", desc: "专业保洁 | 上门服务" }
 ])
 const noticeList = ref([
-  { id: 1, content: "6月10日小区停水通知（9:00-18:00）", time: "2025-06-09" },
-  { id: 2, content: "亲子手工活动报名开始啦！", time: "2025-06-08" }
+  { id: 1, title: "6月10日小区停水通知（9:00-18:00）", time: "2025-06-09" },
+  { id: 2, title: "亲子手工活动报名开始啦！", time: "2025-06-08" }
 ])
 const qaResult = ref('')
 const qaLib = {

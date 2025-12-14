@@ -71,7 +71,7 @@ export default {
 .page-title {
   font-size: 34rpx;
   font-weight: bold;
-  color: #FF9800;
+  color: #333;
   margin: 0 0 20rpx 10rpx;
 }
 
