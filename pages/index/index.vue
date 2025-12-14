@@ -112,5 +112,5 @@ const toQA = () => uni.navigateTo({ url: "/pages/qa/index" })
 const toGarbage = () => uni.navigateTo({ url: "/pages/garbage/index" })
 const toRepair = () => uni.navigateTo({ url: "/pages/repair/index" })
 const toService = () => uni.navigateTo({ url: "/pages/service/index" })
-const toNotice = () => uni.switchTab({ url: "/pages/notice/center" })
+const toNotice = () => uni.switchTab({ url: "/pages/notice/index" })
 </script>

@@ -13,7 +13,7 @@
 			}
 		},
 		{
-			"path": "pages/notice/center",
+			"path": "pages/notice/index",
 			"style": {
 				"navigationBarTitleText": "通知中心"
 			}
@@ -80,7 +80,7 @@
 				"selectedIconPath": "static/tab/order-active.png"
 			},
 			{
-				"pagePath": "pages/notice/center",
+				"pagePath": "pages/notice/index",
 				"text": "通知中心",
 				"iconPath": "static/tab/notice.png",
 				"selectedIconPath": "static/tab/notice-active.png"
