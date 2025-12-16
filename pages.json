@@ -31,6 +31,24 @@
 			}
 		},
 		{
+			"path": "pages/mine/login",
+			"style": {
+				"navigationBarTitleText": "登录"
+			}
+		},
+		{
+			"path": "pages/mine/problem",
+			"style": {
+				"navigationBarTitleText": "常见问题"
+			}
+		},
+		{
+			"path": "pages/mine/rule",
+			"style": {
+				"navigationBarTitleText": "社区规则"
+			}
+		},
+		{
 			"path": "pages/qa/index",
 			"style": {
 				"navigationBarTitleText": "智能问答"
@@ -60,7 +78,13 @@
 				"navigationBarTitleText": "服务详情"
 			}
 		}
-	],
+	], 
+  "easycom": {
+    "autoscan": true,
+    "custom": {
+      "^uni-(.*)": "@dcloudio/uni-ui/lib/uni-$1/uni-$1.vue"
+    }
+  },
 	"globalStyle": {
 		"navigationBarTextStyle": "white",
 		"navigationBarTitleText": "AI智邻小助手",
