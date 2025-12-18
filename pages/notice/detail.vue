@@ -1,7 +1,7 @@
 <template>
   <view class="notice-detail-page">
     <view class="detail-title">{{ currentNotice.title }}</view>
-    <view class="detail-time">{{ currentNotice.time }}</view>
+    <view class="detail-time">{{ formatDate(currentNotice.updatedAt) }}</view>
     <view class="detail-content">{{ currentNotice.content }}</view>
   </view>
 </template>
@@ -20,7 +20,13 @@ export default {
     this.getNoticeDetail(options.id);
   },
   methods: {
-    // 接口请求：和service的getServiceDetail写法完全一致
+    formatDate(val) {
+      if (!val) return '';
+      const d = new Date(val);
+      if (isNaN(d.getTime())) return String(val);
+      const pad = (n) => String(n).padStart(2, '0');
+      return `${d.getFullYear()}-${pad(d.getMonth()+1)}-${pad(d.getDate())} ${pad(d.getHours())}:${pad(d.getMinutes())}:${pad(d.getSeconds())}`;
+    },
     async getNoticeDetail(id) {
       const res = await get(`/miniprogram/notices/${id}`);
       this.currentNotice = res;

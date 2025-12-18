@@ -27,7 +27,7 @@
         </view>
         <!-- 报修时间 -->
         <view class="order-time">
-          <text>提交时间：{{ item.time }}</text>
+          <text>提交时间：{{ formatDate(item.createdAt) }}</text>
         </view>
       </view>
     </view>
@@ -52,8 +52,15 @@ export default {
     this.getOrderList();
   },
   methods: {
+    formatDate(val) {
+      if (!val) return '';
+      const d = new Date(val);
+      if (isNaN(d.getTime())) return String(val);
+      const pad = (n) => String(n).padStart(2, '0');
+      return `${d.getFullYear()}-${pad(d.getMonth()+1)}-${pad(d.getDate())} ${pad(d.getHours())}:${pad(d.getMinutes())}:${pad(d.getSeconds())}`;
+    },
     async getOrderList() {
-      const res = await get('/miniprogram/workOrders', { page: 1, size: 10 });
+      const res = await get('/miniprogram/workOrders', { page: 1, size: 20 });
       this.orderList = res.list;
     },
     toRepair() {

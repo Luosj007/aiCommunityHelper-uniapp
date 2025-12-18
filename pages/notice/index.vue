@@ -11,7 +11,7 @@
         @click="goToDetail(item.id)"
       >
         <text class="notice-title">{{ item.title }}</text>
-        <text class="notice-time">{{ item.time }}</text>
+        <text class="notice-time">{{ formatDate(item.updatedAt) }}</text>
       </view>
     </view>
   </view>
@@ -32,9 +32,17 @@ export default {
     this.getNoticeList();
   },
   methods: {
+    formatDate(val) {
+      if (!val) return '';
+      const d = new Date(val);
+      if (isNaN(d.getTime())) return String(val);
+      const pad = (n) => String(n).padStart(2, '0');
+      return `${d.getFullYear()}-${pad(d.getMonth()+1)}-${pad(d.getDate())} ${pad(d.getHours())}:${pad(d.getMinutes())}:${pad(d.getSeconds())}`;
+    },
+
     // 接口请求：和service的getServiceList写法完全一致
     async getNoticeList() {
-      const res = await get('/miniprogram/notices', { page: 1, size: 10 });
+      const res = await get('/miniprogram/notices', { page: 1, size: 20 });
       this.noticeList = res.list;
     },
     // 跳转逻辑：和service的goToDetail写法完全一致
