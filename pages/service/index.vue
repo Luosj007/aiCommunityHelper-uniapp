@@ -32,6 +32,7 @@
 
 <script>
 import { get } from '@/utils/request.js';
+const BASE_URL = 'http://localhost:7001';
 
 export default {
   data() {
@@ -45,7 +46,12 @@ export default {
   methods: {
     async getServiceList() {
       const res = await get('/miniprogram/services', { page: 1, size: 10 });
-      this.serviceList = res.list;
+      this.serviceList = res.list.map(item => {
+        if (item.img && !item.img.startsWith('http')) {
+          item.img = BASE_URL + item.img;
+        }
+        return item;
+      });
     },
     // 新增：跳转详情页方法，传递服务id
     goToDetail(id) {

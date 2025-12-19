@@ -13,10 +13,6 @@
 
     <!-- 详细信息区（渲染所有字段） -->
     <view class="detail-list">
-      <!-- <view class="detail-row">
-        <text class="detail-label">ID：</text>
-        <text class="detail-value">{{ service.id }}</text>
-      </view> -->
       <view class="detail-row">
         <text class="detail-label">营业时间：</text>
         <text class="detail-value">{{ service.time }}</text>
@@ -33,21 +29,13 @@
         <text class="detail-label">服务详情：</text>
         <text class="detail-value content-text">{{ service.content }}</text>
       </view>
-      <!-- <view class="detail-row">
-        <text class="detail-label">创建时间：</text>
-        <text class="detail-value">{{ service.createdAt }}</text>
-      </view> -->
-      <!-- <view class="detail-row">
-        <text class="detail-label">更新时间：</text>
-        <text class="detail-value">{{ service.updatedAt }}</text>
-      </view> -->
     </view>
   </view>
 </template>
 
 <script>
 import { get } from '@/utils/request.js';
-
+const BASE_URL = 'http://localhost:7001';
 export default {
   data() {
     return { service: {} };
@@ -75,7 +63,10 @@ export default {
 
     async getServiceDetail(id) {
       const res = await get(`/miniprogram/services/${id}`);
-      // 格式化时间字段
+      // 拼接完整图片地址
+      if (res.img && !res.img.startsWith('http')) {
+        res.img = BASE_URL + res.img;
+      }
       res.createdAt = this.formatTime(res.createdAt);
       res.updatedAt = this.formatTime(res.updatedAt);
       this.service = res;
