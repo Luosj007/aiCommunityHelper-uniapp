@@ -25,3 +25,4 @@ yarn-error.log*
 # 环境变量文件（若有敏感信息）
 .env
 .env.*
+config.js
