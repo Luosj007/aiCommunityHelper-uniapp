@@ -13,7 +13,7 @@
           ></image>
           <view v-else class="avatar-placeholder"></view>
         </view>
-        <text class="username">{{ isLogin ? '飞翔的莺' : '点击头像登录' }}</text>
+        <text class="username">{{ isLogin ? '飞翔的鹰' : '点击头像登录' }}</text>
       </view>
     </view>
 
