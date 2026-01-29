@@ -95,32 +95,41 @@ export default {
     },
 
     // 辅助：模拟识别结果（前端写死，不用API）
-    getMockResult() {
-      const mockData = [
-        {
-          name: "矿泉水瓶",
-          type: "可回收物",
-          guide: "请清洗后投入蓝色可回收物垃圾桶"
-        },
-        {
-          name: "剩菜剩饭",
-          type: "厨余垃圾",
-          guide: "请沥干水分后投入绿色厨余垃圾桶"
-        },
-        {
-          name: "废旧电池",
-          type: "有害垃圾",
-          guide: "请投入红色有害垃圾桶"
-        },
-        {
-          name: "用过的纸巾",
-          type: "其他垃圾",
-          guide: "请投入灰色其他垃圾桶"
-        }
-      ];
-      // 随机返回一个结果
-      return mockData[Math.floor(Math.random() * mockData.length)];
-    },
+    // getMockResult() {
+    //   const mockData = [
+    //     {
+    //       name: "矿泉水瓶",
+    //       type: "可回收物",
+    //       guide: "请清洗后投入蓝色可回收物垃圾桶"
+    //     },
+    //     {
+    //       name: "剩菜剩饭",
+    //       type: "厨余垃圾",
+    //       guide: "请沥干水分后投入绿色厨余垃圾桶"
+    //     },
+    //     {
+    //       name: "废旧电池",
+    //       type: "有害垃圾",
+    //       guide: "请投入红色有害垃圾桶"
+    //     },
+    //     {
+    //       name: "用过的纸巾",
+    //       type: "其他垃圾",
+    //       guide: "请投入灰色其他垃圾桶"
+    //     }
+    //   ];
+    //   // 随机返回一个结果
+    //   return mockData[Math.floor(Math.random() * mockData.length)];
+    // },
+    // 辅助：模拟识别结果（固定返回塑料瓶，不再随机）
+getMockResult() {
+  // 删掉原来的mockData数组和随机逻辑，直接返回塑料瓶的结果
+  return {
+    name: "塑料瓶",
+    type: "可回收物",
+    guide: "请清洗后投入蓝色可回收物垃圾桶"
+  };
+},
 
     // 辅助：给垃圾类型设置颜色
     setTypeColor(type) {

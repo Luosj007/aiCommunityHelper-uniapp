@@ -4,7 +4,27 @@
       <text class="title">常见问题</text>
     </view>
     
-    <scroll-view scroll-y class="content-container">
+    <scroll-view scroll-y class="content-container">      
+      <!-- 功能使用 -->
+      <view class="category">
+        <text class="category-title">⚙️ 功能使用</text>
+        
+        <view class="qa-item">
+          <text class="question">Q1: 如何提交报修？</text>
+          <text class="answer">进入"报修记录"页面，填写相关信息,点击"提交报修"按钮即可。</text>
+        </view>
+        
+        <view class="qa-item">
+          <text class="question">Q2: 如何查看通知？</text>
+          <text class="answer">所有通知都会在"通知中心"显示,点击即可查看详情。</text>
+        </view>
+        
+        <view class="qa-item">
+          <text class="question">Q3: 推荐功能有什么用？</text>
+          <text class="answer">推荐功能会根据您的使用习惯，为您推荐相关的内容和服务。</text>
+        </view>
+      </view>
+      
       <!-- 账号相关 -->
       <view class="category">
         <text class="category-title">📱 账号相关</text>
@@ -24,27 +44,7 @@
           <text class="answer">登录后进入"我的"页面，点击头像区域即可修改昵称、头像等个人信息。</text>
         </view>
       </view>
-      
-      <!-- 功能使用 -->
-      <view class="category">
-        <text class="category-title">⚙️ 功能使用</text>
-        
-        <view class="qa-item">
-          <text class="question">Q1: 如何提交报修？</text>
-          <text class="answer">进入"报修记录"页面，点击"新增报修"按钮，填写相关信息并提交即可。</text>
-        </view>
-        
-        <view class="qa-item">
-          <text class="question">Q2: 如何查看通知？</text>
-          <text class="answer">所有通知都会在"通知中心"显示，未读通知会有红点提示。</text>
-        </view>
-        
-        <view class="qa-item">
-          <text class="question">Q3: 推荐功能有什么用？</text>
-          <text class="answer">推荐功能会根据您的使用习惯，为您推荐相关的内容和服务。</text>
-        </view>
-      </view>
-      
+
       <!-- 支付问题 -->
       <view class="category">
         <text class="category-title">💰 支付问题</text>

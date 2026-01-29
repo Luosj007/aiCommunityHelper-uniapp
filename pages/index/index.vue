@@ -87,8 +87,8 @@ const recommendList = ref([
   { id: 2, img: "/static/shop2.png", name: "悦家专业家政服务中心", desc: "专业保洁 | 上门服务" }
 ])
 const noticeList = ref([
-  { id: 1, title: "6月10日小区停水通知（9:00-18:00）", time: "2025-12-18 12:44:03" },
-  { id: 2, title: "亲子手工活动报名开始啦！（9:00-11:00，仅限30组家庭）", time: "2025-12-14 12:41:11" }
+  { id: 1, title: "1月份社区义诊通知（2026.01.25 09:00-11:00）", time: "2026-01-20 13:40:00" },
+  { id: 2, title: "小区公共区域消杀通知（2026.01.20）", time: "2026-01-18 10:10:00" }
 ])
 const qaResult = ref('')
 const qaLib = {

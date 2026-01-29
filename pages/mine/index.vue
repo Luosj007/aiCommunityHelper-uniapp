@@ -2,8 +2,7 @@
   <view class="my-page">
     <!-- 顶部绿色通栏（头像+用户名） -->
     <view class="top-green-bar">
-      <view :class="['avatar-box', isLogin ? '' : 'clickable']" @click="goToLogin">
-        <!-- 未登录时显示灰白色背景，登录后显示 static/at.png -->
+      <view :class="['avatar-box', !isLogin ? 'clickable' : '']" @click="goToLogin">
         <view class="avatar-container">
           <image 
             v-if="isLogin" 
@@ -17,15 +16,15 @@
       </view>
     </view>
 
-    <!-- 功能入口卡片 -->
-    <view class="func-card">
+    <!-- 功能入口卡片：仅登录后显示 -->
+    <view v-if="isLogin" class="func-card">
       <view class="func-item">
         <image class="func-icon" src="/static/activity-icon.png"></image>
         <text class="func-text">8 推荐</text>
       </view>
       <view class="func-item">
         <image class="func-icon" src="/static/notice-icon.png"></image>
-        <text class="func-text">6 通知</text>
+        <text class="func-text">24 通知</text>
       </view>
     </view>
 
@@ -49,7 +48,7 @@
       </view>
     </view>
 
-    <!-- 退出登录按钮 -->
+    <!-- 退出登录按钮：仅登录后显示，调整位置避免留白 -->
     <button v-if="isLogin" class="logout-btn" @click="logout">退出登录</button>
   </view>
 </template>
@@ -94,11 +93,19 @@ export default {
     },
 
     logout() {
-      uni.removeStorageSync('wx_token');
-      uni.removeStorageSync('wx_userInfo');
-      this.isLogin = false;
-      this.userInfo = {};
-      uni.showToast({ title: '已退出登录', icon: 'success' });
+      uni.showModal({
+        title: '确认退出',
+        content: '是否确定退出登录？',
+        success: (res) => {
+          if (res.confirm) {
+            uni.removeStorageSync('wx_token');
+            uni.removeStorageSync('wx_userInfo');
+            this.isLogin = false;
+            this.userInfo = {};
+            uni.showToast({ title: '已退出登录', icon: 'success' });
+          }
+        }
+      });
     }
   }
 };
@@ -127,17 +134,14 @@ export default {
   gap: 25rpx;
 }
 
-/* 未登录时可点击样式 */
+/* 未登录时可点击样式 + 点击反馈 */
 .clickable {
   cursor: pointer;
+  transition: all 0.2s ease;
 }
-
-.clickable .avatar-container {
-  cursor: pointer;
-}
-
-.clickable .avatar-placeholder {
-  cursor: pointer;
+.clickable:active {
+  opacity: 0.9;
+  transform: scale(0.98);
 }
 
 .avatar-container {
@@ -166,7 +170,7 @@ export default {
   font-weight: 600;
 }
 
-/* 功能入口卡片 */
+/* 功能入口卡片：登录后显示，优化间距 */
 .func-card {
   background-color: #ffffff;
   margin: 30rpx 20rpx;
@@ -182,7 +186,13 @@ export default {
   flex-direction: column;
   align-items: center;
   gap: 12rpx;
+  transition: all 0.2s ease;
 }
+.func-item:active {
+  opacity: 0.8;
+  transform: scale(0.95);
+}
+
 .func-icon {
   width: 55rpx;
   height: 55rpx;
@@ -192,24 +202,28 @@ export default {
   color: #666666;
 }
 
-/* 功能列表（含菜单项） */
+/* 功能列表：优化未登录时的间距，避免空洞 */
 .func-list {
   background-color: #ffffff;
-  margin: 0 20rpx 30rpx;
+  margin: 30rpx 20rpx;
   border-radius: 20rpx;
   box-shadow: 0 3rpx 12rpx rgba(0, 0, 0, 0.06);
 }
 
-/* 菜单项样式（对齐原需求） */
+/* 菜单项样式 + 点击反馈 */
 .menu-item {
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 35rpx 30rpx;
   border-bottom: 1rpx solid #f3f3f3;
+  transition: all 0.2s ease;
 }
 .menu-item:last-child {
   border-bottom: none;
+}
+.menu-item:active {
+  background-color: #f8f8f8;
 }
 
 .menu-icon {
@@ -221,14 +235,18 @@ export default {
   flex: 1;
 }
 
-/* 退出登录按钮 */
+/* 退出登录按钮：优化样式和间距 */
 .logout-btn {
   background-color: transparent;
   color: #ef4444;
   font-size: 30rpx;
-  margin: 0 20rpx;
+  margin: 0 20rpx 30rpx;
   padding: 22rpx 0;
   border: 1rpx solid #ef4444;
   border-radius: 12rpx;
+  transition: all 0.2s ease;
+}
+.logout-btn:active {
+  background-color: #fef2f2;
 }
 </style>
