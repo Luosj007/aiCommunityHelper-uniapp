@@ -36,6 +36,7 @@
 
 <script>
 import { get } from '@/utils/request.js';
+import { formatDate } from '@/utils/format.js';
 
 export default {
   data() {
@@ -52,13 +53,7 @@ export default {
     this.getOrderList();
   },
   methods: {
-    formatDate(val) {
-      if (!val) return '';
-      const d = new Date(val);
-      if (isNaN(d.getTime())) return String(val);
-      const pad = (n) => String(n).padStart(2, '0');
-      return `${d.getFullYear()}-${pad(d.getMonth()+1)}-${pad(d.getDate())} ${pad(d.getHours())}:${pad(d.getMinutes())}:${pad(d.getSeconds())}`;
-    },
+    formatDate,
     async getOrderList() {
       const res = await get('/miniprogram/workOrders', { page: 1, size: 20 });
       this.orderList = res.list;

@@ -45,37 +45,41 @@
 
     </scroll-view>
 
-    <!-- 输入区域 -->
-    <view class="input-area">
-      <input
-        class="input"
-        v-model="inputText"
-        placeholder="请输入问题..."
-        :disabled="loading"
-        @confirm="sendMessage"
-      />
+    <!-- 底部固定区域 -->
+    <view class="bottom-area">
+      <!-- 输入区域 -->
+      <view class="input-area">
+        <input
+          class="input"
+          v-model="inputText"
+          placeholder="请输入问题..."
+          :disabled="loading"
+          @confirm="sendMessage"
+        />
+        <button
+          class="send-btn"
+          :disabled="!inputText.trim() || loading"
+          @tap="sendMessage"
+        >
+          {{ loading ? '发送中' : '发送' }}
+        </button>
+      </view>
+
+      <!-- 清空按钮 -->
       <button
-        class="send-btn"
-        :disabled="!inputText.trim() || loading"
-        @tap="sendMessage"
+        class="clear-btn"
+        v-if="messages.length > 0"
+        @tap="clearChat"
       >
-        {{ loading ? '发送中' : '发送' }}
+        清空对话
       </button>
     </view>
-
-    <!-- 清空按钮 -->
-    <button
-      class="clear-btn"
-      v-if="messages.length > 0"
-      @tap="clearChat"
-    >
-      清空对话
-    </button>
   </view>
 </template>
 
 <script>
 import MarkdownIt from 'markdown-it'
+import { postRaw } from '@/utils/request.js'
 
 const md = new MarkdownIt({
   html: true,
@@ -133,27 +137,19 @@ export default {
       }
     },
 
-    // ✅ 调用 Egg 后端（已对齐）
+    // 调用后端 AI 接口（地址统一在 utils/request.js 的 baseUrl 配置）
     async callAI() {
-      const res = await uni.request({
-		url: 'https://jerrold-unintermitting-nonsegmentally.ngrok-free.dev/api/ai/chat',
-        method: 'POST',
-        header: {
-          'Content-Type': 'application/json'
-        },
-        data: {
-          messages: this.messages.slice(-10).map(m => ({
-            role: m.role,
-            content: m.content
-          }))
-        },
-        timeout: 30000
-      })
+      const res = await postRaw('/api/ai/chat', {
+        messages: this.messages.slice(-10).map(m => ({
+          role: m.role,
+          content: m.content
+        }))
+      }, 30000)
 
-      if (!res.data || !res.data.content) {
+      if (!res || !res.content) {
         throw new Error('AI 返回数据异常')
       }
-      return res.data.content
+      return res.content
     },
 
     clearChat() {
@@ -185,9 +181,11 @@ export default {
   flex-direction: column;
   height: 100vh;
   background: #f5f5f5;
+  overflow: hidden;
 }
 
 .header {
+  flex-shrink: 0;
   padding: 40rpx 30rpx 20rpx;
   background: #fff;
   border-bottom: 1rpx solid #e0e0e0;
@@ -201,6 +199,14 @@ export default {
 .chat-container {
   flex: 1;
   padding: 30rpx 20rpx;
+  background: #f5f5f5;
+  overflow: hidden;
+}
+
+/* 底部固定区域（输入框 + 清空按钮），始终可见 */
+.bottom-area {
+  flex-shrink: 0;
+  background: #fff;
 }
 
 .msg-wrapper {

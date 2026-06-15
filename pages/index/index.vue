@@ -83,12 +83,12 @@ import { ref } from 'vue'
 import './index.css' 
 
 const recommendList = ref([
-  { id: 1, img: "/static/shop1.png", name: "仁心社区药店", desc: "医保定点 | 24小时营业" },
-  { id: 2, img: "/static/shop2.png", name: "悦家专业家政服务中心", desc: "专业保洁 | 上门服务" }
+  { id: 1, img: "/static/shop1.png", name: "社区医保定点药店", desc: "医保定点，24小时售药" },
+  { id: 2, img: "/static/shop2.png", name: "社区专业家政服务", desc: "保洁、家电清洗、保姆月嫂" }
 ])
 const noticeList = ref([
-  { id: 1, title: "1月份社区义诊通知（2026.01.25 09:00-11:00）", time: "2026-01-20 13:40:00" },
-  { id: 2, title: "小区公共区域消杀通知（2026.01.20）", time: "2026-01-18 10:10:00" }
+  { id: 1, title: "系统上线通知", time: "2026-01-20 13:40:00" },
+  { id: 2, title: "更新结果", time: "2026-01-18 10:10:00" }
 ])
 const qaResult = ref('')
 const qaLib = {

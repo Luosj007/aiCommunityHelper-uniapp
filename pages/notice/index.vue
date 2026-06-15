@@ -20,6 +20,7 @@
 <script>
 // 接口逻辑：和service完全一致的导入+写法
 import { get } from '@/utils/request.js';
+import { formatDate } from '@/utils/format.js';
 
 export default {
   data() {
@@ -32,13 +33,7 @@ export default {
     this.getNoticeList();
   },
   methods: {
-    formatDate(val) {
-      if (!val) return '';
-      const d = new Date(val);
-      if (isNaN(d.getTime())) return String(val);
-      const pad = (n) => String(n).padStart(2, '0');
-      return `${d.getFullYear()}-${pad(d.getMonth()+1)}-${pad(d.getDate())} ${pad(d.getHours())}:${pad(d.getMinutes())}:${pad(d.getSeconds())}`;
-    },
+    formatDate,
 
     // 接口请求：和service的getServiceList写法完全一致
     async getNoticeList() {

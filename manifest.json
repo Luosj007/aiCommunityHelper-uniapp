@@ -1,6 +1,6 @@
 {
     "name" : "ai-community-helper",
-    "appid" : "wxa1b0e1c9095d2549",
+    "appid" : "",
     "description" : "",
     "versionName" : "1.0.0",
     "versionCode" : "100",
@@ -51,6 +51,7 @@
     /* 小程序特有相关 */
     "mp-weixin" : {
         "appid" : "wxa1b0e1c9095d2549",
+		"lazyCodeLoading": "requiredComponents",
         "setting" : {
             "urlCheck" : false
         },

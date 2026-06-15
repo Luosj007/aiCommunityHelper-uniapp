@@ -32,6 +32,7 @@
 
 <script>
 import { post } from '@/utils/request.js';
+import { formatNow } from '@/utils/format.js';
 
 export default {
   data() {
@@ -44,18 +45,6 @@ export default {
   methods: {
     clearError() {
       this.errorMsg = '';
-    },
-
-    formatCurrentTime() {
-      const date = new Date();
-      const padZero = num => num.toString().padStart(2, '0');
-      const year = date.getFullYear();
-      const month = padZero(date.getMonth() + 1);
-      const day = padZero(date.getDate());
-      const hour = padZero(date.getHours());
-      const minute = padZero(date.getMinutes());
-      const second = padZero(date.getSeconds());
-      return `${year}-${month}-${day} ${hour}:${minute}:${second}`;
     },
 
     generateOrderNo() {
@@ -83,7 +72,7 @@ export default {
           status: 'pending',                // 默认状态：待处理
           status_text: '待处理',             // 状态文本
           content: trimContent,             // 用户输入的报修内容（去空格）
-          time: this.formatCurrentTime()    // 当前时间（自动格式化）
+          time: formatNow()    // 当前时间（自动格式化）
         };
 
         // 3. 调用后端新增工单接口（原有request.js：code=200会resolve，否则reject）

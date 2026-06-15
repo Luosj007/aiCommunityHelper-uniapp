@@ -35,7 +35,8 @@
 
 <script>
 import { get } from '@/utils/request.js';
-const BASE_URL = 'http://localhost:7001';
+import { baseUrl } from '@/utils/request.js';
+import { formatUTC8 } from '@/utils/format.js';
 export default {
   data() {
     return { service: {} };
@@ -44,31 +45,16 @@ export default {
     this.getServiceDetail(options.id);
   },
   methods: {
-    // 新增：时间格式化函数（ISO时间转东八区+日常格式）
-    formatTime(isoTime) {
-      const date = new Date(isoTime);
-      // 转换为东八区时间（UTC+8）
-      date.setHours(date.getHours() + 8);
-      // 拼接为 "年-月-日 时:分:秒" 格式
-      return [
-        date.getFullYear(),
-        String(date.getMonth() + 1).padStart(2, '0'),
-        String(date.getDate()).padStart(2, '0')
-      ].join('-') + ' ' + [
-        String(date.getHours()).padStart(2, '0'),
-        String(date.getMinutes()).padStart(2, '0'),
-        String(date.getSeconds()).padStart(2, '0')
-      ].join(':');
-    },
+    formatUTC8,
 
     async getServiceDetail(id) {
       const res = await get(`/miniprogram/services/${id}`);
       // 拼接完整图片地址
       if (res.img && !res.img.startsWith('http')) {
-        res.img = BASE_URL + res.img;
+        res.img = baseUrl + res.img;
       }
-      res.createdAt = this.formatTime(res.createdAt);
-      res.updatedAt = this.formatTime(res.updatedAt);
+      res.createdAt = formatUTC8(res.createdAt);
+      res.updatedAt = formatUTC8(res.updatedAt);
       this.service = res;
     }
   }

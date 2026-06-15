@@ -31,8 +31,7 @@
 </template>
 
 <script>
-import { get } from '@/utils/request.js';
-const BASE_URL = 'http://localhost:7001';
+import { get, baseUrl } from '@/utils/request.js';
 
 export default {
   data() {
@@ -48,7 +47,7 @@ export default {
       const res = await get('/miniprogram/services', { page: 1, size: 10 });
       this.serviceList = res.list.map(item => {
         if (item.img && !item.img.startsWith('http')) {
-          item.img = BASE_URL + item.img;
+          item.img = baseUrl + item.img;
         }
         return item;
       });

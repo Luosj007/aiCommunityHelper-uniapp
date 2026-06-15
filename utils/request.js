@@ -1,6 +1,7 @@
 // utils/request.js
-// 后端基础地址（本地调试用，上线换服务器IP/域名）
-const baseUrl = 'http://localhost:7001';
+// 后端基础地址（本地调试用：localhost，真机调试用 Cloudflare 隧道地址）
+// 每次只需改这一个地方！
+export const baseUrl = 'http://localhost:7001';
 
 /**
  * UniApp 请求封装
@@ -59,5 +60,28 @@ export const request = (url, method = 'GET', data = {}) => {
 
 // 快捷封装GET请求（简化调用）
 export const get = (url, data) => request(url, 'GET', data);
-// 快捷封装POST请求（后续有需要可加）
+// 快捷封装POST请求
 export const post = (url, data) => request(url, 'POST', data);
+
+// 原始POST请求（不解析 code/data 包装，直接返回 res.data）
+// 用于 AI Chat 等非标准响应格式的接口
+export const postRaw = (url, data, timeout = 10000) => {
+  const token = uni.getStorageSync('wx_token');
+  const header = { 'content-type': 'application/json' };
+  if (token) header.Authorization = `Bearer ${token}`;
+
+  return new Promise((resolve, reject) => {
+    uni.request({
+      url: baseUrl + url,
+      method: 'POST',
+      data,
+      header,
+      timeout,
+      success: (res) => resolve(res.data),
+      fail: (err) => {
+        reject('网络错误，请检查后端服务是否启动');
+        console.error('请求失败：', err);
+      }
+    });
+  });
+};
